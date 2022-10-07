@@ -11,6 +11,12 @@
 
   $config = new Config([
       'debug' => true
+      'driver' => '',
+      'address' => '',
+      'port' => '',
+      'username' => '',
+      'password' => '',
+      'database' => ''
   ]);
 
   $request = RequestFactory::fromGlobals();
