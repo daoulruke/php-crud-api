@@ -20,29 +20,33 @@
       //$_SESSION['subdomain'] = 'mysql8';
   }
 
-  function get_env_values($env_file) {
-      $env_values = [];
-      $env_contents = file($env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-      foreach ($env_contents as $content) {
-          if (strpos(trim($content), '#') === 0) {
-              continue;
-          }
-          list($key, $value) = explode('=', $content, 2);
-          $key = trim($key);
-          $value = trim($value);
-          $env_values[$key] = $value;
-      }
-      return $env_values;
-  }
 
-  $env_file = "{$_SERVER['DOCUMENT_ROOT']}/../.env";
 
-  if (file_exists($env_file)) {
-      $_ENV = get_env_values($env_file);
+  if(file_exists('../.env')) {
+      $env_vars = file('../.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+      $_ENV = array();
   } else {
-      die('[FATAL ERROR] ENVIRONMENT UNKNOWN');
+      echo '[NO-ENVIRONMENT]' . PHP_EOL;
+      exit;
   }
 
+  foreach ($env_vars AS $env_var) {
+
+      if (strpos(trim($env_var), '#') === 0) {
+          continue;
+      }
+
+      list($name, $value) = explode('=', $env_var, 2);
+
+      $name = trim($name);
+      $value = trim($value);
+
+      if (!array_key_exists($name, $_ENV)) {
+          putenv(sprintf('%s=%s', $name, $value));
+          $_ENV[$name] = $value;
+      }
+
+  }
 
   if($_SESSION['PHP_CRUD_API_DEBUG'] == true) {
       ini_set('display_errors', 1);
@@ -54,15 +58,14 @@
   //require 'controllers.php';
   //require 'router.php';
 
-  $request = RequestFactory::fromGlobals();
-  $original_request = $request;
-
+  
 
   $config = new Config([
     // using $_ENV
   ]);
 
   $request = RequestFactory::fromGlobals();
+  $original_request = $request;
   $api = new Api($config);
 
   $response = $api->handle($request);
