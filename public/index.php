@@ -10,13 +10,7 @@
   include('api.include.php');
 
   $config = new Config([
-      'debug' => true,
-      'driver' => '',
-      'address' => '',
-      'port' => '',
-      'username' => '',
-      'password' => '',
-      'database' => ''
+      'debug' => true
   ]);
 
   $request = RequestFactory::fromGlobals();
