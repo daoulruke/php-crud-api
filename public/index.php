@@ -1,5 +1,7 @@
 <?php
 
+<?php
+
   namespace Tqdev\PhpCrudApi;
 
   use Tqdev\PhpCrudApi\Api;
@@ -43,11 +45,6 @@
       die('[FATAL ERROR] ENVIRONMENT UNKNOWN');
   }
 
-  if(!isset($_SESSION['PHP_CRUD_API_DEBUG'])) {
-      $_SESSION['PHP_CRUD_API_DEBUG'] = $_ENV['PHP_CRUD_API_DEBUG'];
-  }
-
-  $_SESSION['PHP_CRUD_API_DEBUG'] = true;
 
   if($_SESSION['PHP_CRUD_API_DEBUG'] == true) {
       ini_set('display_errors', 1);
@@ -62,25 +59,6 @@
   $request = RequestFactory::fromGlobals();
   $original_request = $request;
 
-  if (isset($_GET['key'])) {
-      $_SESSION['key'] = $_GET['key'];
-  }
-
-  if (isset($_SESSION['key'])) {
-      $request = $request->withHeader('X-API-Key', $_SESSION['key']);
-  }
-
-  print_r($_ENV);
-
-  // DB Query
-  $command = '';
-  $tables = array();
-  $mapping = array();
-  settype($geometrySrid, 'integer');
-  $db = new GenericDB($_ENV['PHP_CRUD_API_DRIVER'], $_ENV['PHP_CRUD_API_ADDRESS'], $_ENV['PHP_CRUD_API_PORT'], $_ENV['PHP_CRUD_API_DATABASE'], $command, $tables, $mapping, $_ENV['PHP_CRUD_API_USERNAME'], $_ENV['PHP_CRUD_API_PASSWORD'], $geometrySrid);
-  $reflector = new \ReflectionObject($db);
-  $db_query = $reflector->getMethod('query');
-  $db_query->setAccessible(true);
 
   $config = new Config([
     // using $_ENV
