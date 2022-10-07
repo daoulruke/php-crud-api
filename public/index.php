@@ -47,6 +47,8 @@
       $_SESSION['PHP_CRUD_API_DEBUG'] = $_ENV['PHP_CRUD_API_DEBUG'];
   }
 
+  $_SESSION['PHP_CRUD_API_DEBUG'] = true;
+
   if($_SESSION['PHP_CRUD_API_DEBUG'] == true) {
       ini_set('display_errors', 1);
       ini_set('display_startup_errors', 1);
