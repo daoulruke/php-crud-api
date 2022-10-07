@@ -11,7 +11,6 @@
 
   if(file_exists('../.env')) {
       $env_vars = file('../.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-      $_ENV = array();
   } else {
       echo '[NO-ENVIRONMENT]' . PHP_EOL;
       exit;
@@ -35,12 +34,10 @@
 
   }
 
-  //var_dump($_ENV);
-
   include('api.include.php');
 
   $config = new Config([
-  
+    // using $_ENV
   ]);
 
   $request = RequestFactory::fromGlobals();
