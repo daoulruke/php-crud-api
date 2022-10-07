@@ -72,7 +72,7 @@
   $command = '';
   $tables = array();
   $mapping = array();
-  $geometrySrid = null;
+  settype($geometrySrid, 'integer'); 
   $db = new GenericDB($_ENV['PHP_CRUD_API_DRIVER'], $_ENV['PHP_CRUD_API_ADDRESS'], $_ENV['PHP_CRUD_API_PORT'], $_ENV['PHP_CRUD_API_DATABASE'], $command, $tables, $mapping, $_ENV['PHP_CRUD_API_USERNAME'], $_ENV['PHP_CRUD_API_PASSWORD'], $geometrySrid);
   $reflector = new \ReflectionObject($db);
   $db_query = $reflector->getMethod('query');
