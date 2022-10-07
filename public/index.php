@@ -39,13 +39,13 @@
   include('api.include.php');
 
   $config = new Config([
-      'debug' => '',
-      'driver' => '',
-      'address' => '',
-      'port' => '',
-      'username' => 'php_crud_api',
-      'password' => 'php_crud_api',
-      'database' => 'php_crud_api',
+      'debug' => $_ENV['debug'];
+      'driver' => $_ENV['driver'];
+      'address' => $_ENV['address'];
+      'port' => $_ENV['port'];
+      'username' => $_ENV['username'];
+      'password' => $_ENV['password'];
+      'database' => $_ENV['database'];
   ]);
 
   $request = RequestFactory::fromGlobals();
