@@ -36,6 +36,8 @@
 
   //var_dump($_ENV);
 
+  $_ENV['debug'] = '';
+
   include('api.include.php');
 
   $config = new Config([
