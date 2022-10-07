@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@1.19.5/dist/quasar.min.css" rel="stylesheet" type="text/css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet" type="text/css">
+    <div id="map"></div>
+
+<style>
+#map {
+  position: initial;
+}
+</style>
+  </head>
+
+  <body>
+<div id="q-app">
+    <div id="map"></div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@^2.0.0/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@1.19.5/dist/quasar.umd.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+
+    <script>
+      new Vue({
+        el: '#q-app',
+        data: function () {
+          return {}
+        },
+        methods: {},
+        created() {
+          mapboxgl.accessToken = "pk.eyJ1Ijoia2F0aWVyZXkiLCJhIjoiY2w4MHJucjIzMDk1bjN1cDhsd3l4ZXd4aCJ9.Nt9MAHKQAAEfOL2o-MYodA";
+          const map = new mapboxgl.Map({
+            container: "map",
+            style: "mapbox://styles/mapbox/satellite-v9",
+            center: [-2.81361, 36.77271],
+            zoom: 13
+          });
+        }
+      })
+    </script>
+
+  </body>
+
+</html>
