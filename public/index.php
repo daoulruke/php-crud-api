@@ -36,17 +36,11 @@
   }
 
   //var_dump($_ENV);
-  
+
   include('api.include.php');
 
   $config = new Config([
-      'debug' => $_ENV['debug'],
-      'driver' => $_ENV['driver'],
-      'address' => $_ENV['address'],
-      'port' => $_ENV['port'],
-      'username' => $_ENV['username'],
-      'password' => $_ENV['password'],
-      'database' => $_ENV['database']
+  
   ]);
 
   $request = RequestFactory::fromGlobals();
