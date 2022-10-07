@@ -70,6 +70,8 @@
       $request = $request->withHeader('X-API-Key', $_SESSION['key']);
   }
 
+  print_r($_ENV);
+
   // DB Query
   $command = '';
   $tables = array();
