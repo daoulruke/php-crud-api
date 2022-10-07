@@ -34,6 +34,8 @@
 
   }
 
+  var_dump($_SESSION);
+
   include('api.include.php');
 
   $config = new Config([
