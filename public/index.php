@@ -42,6 +42,7 @@
       'debug' => true,
       'driver' => '',
       'port' => '',
+      'address' => '',
       'username' => '',
       'password' => '',
       'database' => ''
