@@ -41,7 +41,7 @@
   $config = new Config([
       'debug' => true,
       'driver' => '',
-      'address' => '',
+      'address' => 'localhost',
       'port' => '',
       'username' => '',
       'password' => '',
