@@ -34,18 +34,18 @@
 
   }
 
-  var_dump($_ENV);
+  //var_dump($_ENV);
 
   include('api.include.php');
 
   $config = new Config([
-      'debug' => true,
+      'debug' => '',
       'driver' => '',
-      'address' => 'localhost',
+      'address' => '',
       'port' => '',
-      'username' => '',
-      'password' => '',
-      'database' => ''
+      'username' => 'php_crud_api',
+      'password' => 'php_crud_api',
+      'database' => 'php_crud_api',
   ]);
 
   $request = RequestFactory::fromGlobals();
