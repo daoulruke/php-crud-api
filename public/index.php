@@ -48,7 +48,7 @@
 
   }
 
-  if($_SESSION['PHP_CRUD_API_DEBUG'] == true) {
+  if($_ENV['PHP_CRUD_API_DEBUG'] == true) {
       ini_set('display_errors', 1);
       ini_set('display_startup_errors', 1);
       error_reporting(E_ALL);
@@ -58,7 +58,7 @@
   //require 'controllers.php';
   //require 'router.php';
 
-  
+
 
   $config = new Config([
     // using $_ENV
